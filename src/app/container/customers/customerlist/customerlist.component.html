@@ -1,0 +1,40 @@
+<div class="mt-2">
+  <table class="table" *ngIf="customers.length > 0;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of customers; let i = index">
+        <th scope="row" [innerHtml]="i+1">1</th>
+        <td [innerHtml]="user.name.firstname">Mark</td>
+        <td [innerHtml]="user.name.lastname">Otto</td>
+        <td [innerHtml]="user.email">@mdo</td>
+        <td [innerHtml]="user.phone">@mdo</td>
+        <td>
+          <a [routerLink]="['/customers']" class="btn btn-primary btn-sm mr-1" tooltip="View"><i class="fas fa-eye "></i></a>
+          <button type="button" class="btn btn-info btn-sm mr-1" tooltip="Edit" (click)="editUser(user.id)"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm" tooltip="Delete" (click)="deleteUser(user.id)"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <div class="alert alert-danger" role="alert" *ngIf="customers.length == 0 && !loading">
+    No record available to show
+  </div> 
+  <div class="alert alert-danger" role="alert" *ngIf="error && !loading">
+    An Error occured, Please try again
+    <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="tryAgain()"><i class="fa fa-close"></i></button>
+  </div>
+</div>
+
+<app-loader  *ngIf="loading"></app-loader>
+
+<app-customer-update #customerAddEdit></app-customer-update>
