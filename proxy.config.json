@@ -1,0 +1,14 @@
+{
+    "/api": {
+        "target": "https://localhost:4200",
+        "secure": false
+    },
+    "/api1": {
+        "target": "https://localhost:5200",
+        "secure": false
+    },
+    "/api2": {
+        "target": "https://localhost:6200",
+        "secure": false
+    }
+}
